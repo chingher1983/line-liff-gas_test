@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>彩色九九乘法表</title>
+    <style>
+        body {
+            font-family: 'Arial Rounded MT Bold', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        h1 {
+            color: #4a69bd;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        table {
+            border-collapse: separate;
+            border-spacing: 5px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            padding: 15px;
+        }
+        th, td {
+            width: 80px;
+            height: 40px;
+            text-align: center;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        th {
+            background: #4a69bd;
+            color: white;
+            font-weight: bold;
+        }
+        td {
+            background: #f8f9fa;
+            color: #333;
+        }
+        td:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: #e3f2fd;
+        }
+        .header-cell {
+            background: #3c6382;
+        }
+    </style>
+</head>
+<body>
+    <h1>九九乘法表</h1>
+    <table id="multiplication-table">
+        <thead>
+            <tr>
+                <th class="header-cell">×</th>
+                <script>
+                    for(let i = 1; i <= 9; i++) {
+                        document.write(`<th class="header-cell">${i}</th>`);
+                    }
+                </script>
+            </tr>
+        </thead>
+        <tbody>
+            <script>
+                for(let i = 1; i <= 9; i++) {
+                    document.write(`<tr><th class="header-cell">${i}</th>`);
+                    for(let j = 1; j <= 9; j++) {
+                        const product = i * j;
+                        const colorIntensity = Math.min(90 + product * 2, 240);
+                        document.write(`<td style="background-color: hsl(${product * 10}, 70%, ${colorIntensity}%)">${i}×${j}=${product}</td>`);
+                    }
+                    document.write('</tr>');
+                }
+            </script>
+        </tbody>
+    </table>
+</body>
+</html>
